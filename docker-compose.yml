@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  pocketbase:
+    build:
+      context: ./pocketbase
+      dockerfile: Dockerfile
+      args:
+        PB_VERSION: 0.22.22
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./pocketbase/pb_data:/pb/pb_data
+      - ./pocketbase/pb_migrations:/pb/pb_migrations
+    environment:
+      - POCKETBASE_ENV=production
+    command: ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+
+  pai_go:
+    build:
+      context: ./api-go
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - pocketbase
+    environment:
+      - GO_ENV=production
+      - POCKETBASE_URL=http://pocketbase:8080

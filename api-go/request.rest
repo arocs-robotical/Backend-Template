@@ -1,0 +1,133 @@
+###
+GET http://localhost:3000/products
+
+###
+GET http://localhost:3000/products/:id
+
+###
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "testproducts",
+    "varian": "testvarian",
+    "in_stock": 123,
+    "stock_minimum": 456
+}
+
+###
+PUT http://localhost:3000/products/:id
+Content-Type: application/json
+
+{
+    "name": "changename",
+    "varian": "testvarian",
+    "in_stock": 456,
+    "stock_minimum": 456
+}
+
+###
+DELETE http://localhost:3000/products/:id
+
+###
+GET http://localhost:3000/flow_in
+
+###
+GET http://localhost:3000/flow_in/:id
+
+###
+POST http://localhost:3000/flow_in
+Content-Type: application/json
+
+{
+    "name": "testflowin",
+    "vendor_name": "testvendor",
+    "contact_vendor": "+123 456 7898",
+    "scheduled_arrived": "2022-01-01 10:00:00.123Z",
+    "status": "draft",
+    "product_in": []
+}
+
+###
+PUT http://localhost:3000/flow_in/:id
+Content-Type: application/json
+
+{
+    "name": "testflowin",
+    "vendor_name": "testvendor",
+    "contact_vendor": "+123 456 7898",
+    "scheduled_arrived": "2022-01-01 10:00:00.123Z",
+    "status": "done",
+    "product_in": []
+}
+
+###
+DELETE http://localhost:3000/flow_in/:id
+
+###
+GET http://localhost:3000/flow_out
+
+###
+GET http://localhost:3000/flow_out/:id
+
+###
+POST http://localhost:3000/flow_out
+Content-Type: application/json
+
+{
+    "name": "testflowout",
+    "customer_name": "testcustomer",
+    "customer_contact": "+123 456 7898",
+    "customer_address": "testaddress",
+    "deadline_sent": "2022-01-01 10:00:00.123Z",
+    "status": "draft",
+    "product_out": []
+}
+
+###
+PUT http://localhost:3000/flow_out/:id
+Content-Type: application/json
+
+{
+    "name": "testflowout",
+    "customer_name": "change_customer_name",
+    "customer_contact": "+123 456 7898",
+    "customer_address": "testaddress",
+    "deadline_sent": "2022-01-01 10:00:00.123Z",
+    "status": "done",
+    "product_out": []
+}
+
+###
+DELETE http://localhost:3000/flow_out/:id
+
+###
+GET http://localhost:3000/robot_allocation
+
+###
+GET http://localhost:3000/robot_allocation/:id
+
+###
+POST http://localhost:3000/robot_allocation
+Content-Type: application/json
+
+{
+    "location_x": 12,
+    "location_y": 3,
+    "location_z": 4,
+    "status": "ready"
+}
+
+###
+PUT http://localhost:3000/robot_allocation/:id
+Content-Type: application/json
+
+{
+    "location_x": 14,
+    "location_y": 65,
+    "location_z": 42,
+    "status": "working"
+}
+
+###
+DELETE http://localhost:3000/robot_allocation/:id
